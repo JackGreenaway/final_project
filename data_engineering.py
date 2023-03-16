@@ -1,6 +1,9 @@
 import pandas as pd
 
+# this script takes a .csv file and changes columns with string values, creates a key dictionary
+# then replaces the strings with the key dictionary and saves it to a new .csv file
 
+# import the .csv
 df_train = pd.read_csv(r"dataset\application_train.csv")
 df_test = pd.read_csv(r"dataset\application_test.csv")
 
@@ -25,16 +28,20 @@ for col in df_train.columns:
 print("Key dictionary created")
 
 
+print("Integrating keys into dataframe...")
 # replace the string values in the dataframe with the key created
 for col in key_columns:
-    df_train.replace({str(col): key}, inplace=True)
+    df_train.replace({str(col): key}, inplace=True)  # train
+print("Train dataframe intergrated")
 for col in key_columns:
-    df_test.replace({str(col): key}, inplace=True)
+    df_test.replace({str(col): key}, inplace=True)  # test
+print("Test dataframe intergrated")
 print("Key successfully integrated into dataframe")
 
+# saved the engineered data in a new .csv
 try:
     df_train.to_csv(r"engineered data/df_train.csv")
     df_test.to_csv(r"engineered data/df_test.csv")
-    print("Data exported to .csv")
+    print("Data exported to .csv @ .../engineered data/")
 except:
     print("Error - folder may already contain files")
