@@ -26,6 +26,7 @@ for col in df_train.columns:
                 # add to the dictionary with a unique value
                 key[col_name] = len(key) + 1
 print("Key dictionary created")
+# print(key)
 
 
 print("Integrating keys into dataframe...")
