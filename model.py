@@ -8,19 +8,20 @@ import keras_tuner as kt
 def model_builder(hp):
     model = Sequential()
 
-    # add input shape layer here
+    # input layer 
+    model.add(Dense(units=self.x_train.shape[0], input_shape=(self.x_train.shape[0], self.x_train.shape[1])))
 
     # let the model decide how many layers it wants to have
-    for i in range(hp.Int("num_layers", 2, 5)):
+    for i in range(hp.Int("num_layers", min_value=2, max_value=5, step=1)):
         model.add(
             Dense(
-                units=hp.Int("units_" + str(i), min_value=16, max_value=512, step=16),
+                units=hp.Int("layer_" + str(i), min_value=16, max_value=512, step=16),
                 activation=hp.Choice("act_" + str(i), ["relu", "sigmoid"]),
             )
         )
 
     # output shape of the model the same as the number of features
-    model.add(Dense(x_train.shape[1]), activation="softmax")
+    model.add(Dense(self.x_train.shape[0]), activation="softmax")
 
     hp_learning_rate = hp.Choice("learning_rate", values=[1e-2, 1e-3, 1e-4])
 
