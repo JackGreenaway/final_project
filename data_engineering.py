@@ -1,5 +1,9 @@
 import pandas as pd
 
+"""
+Found out after creating this to use sklearn.preprocessing.LabelEncoder
+"""
+
 # this script takes a .csv file and changes columns with string values, creates a key dictionary
 # then replaces the strings with the key dictionary and saves it to a new .csv file
 
