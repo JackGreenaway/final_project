@@ -1,15 +1,16 @@
 import pandas as pd
 
 """
-Found out after creating this to use sklearn.preprocessing.LabelEncoder
+sklearn.preprocessing.LabelEncoder could be used...
+however, that only works with 1d arrays therefore, I feel this method is easier to use
 """
 
 # this script takes a .csv file and changes columns with string values, creates a key dictionary
 # then replaces the strings with the key dictionary and saves it to a new .csv file
 
 # import the .csv
-df_train = pd.read_csv(r"dataset\application_train.csv")
-df_test = pd.read_csv(r"dataset\application_test.csv")
+df_train = pd.read_csv(r"data\application_train.csv")
+df_test = pd.read_csv(r"data\application_test.csv")
 
 df_train = df_train.set_index("SK_ID_CURR")
 df_test = df_test.set_index("SK_ID_CURR")
@@ -45,8 +46,8 @@ print("Key successfully integrated into dataframe")
 
 # saved the engineered data in a new .csv
 try:
-    df_train.to_csv(r"engineered data/df_train.csv")
-    df_test.to_csv(r"engineered data/df_test.csv")
-    print("Data exported to .csv @ .../engineered data/")
+    df_train.to_csv(r"data/df_train.csv")
+    df_test.to_csv(r"data/df_test.csv")
+    print("Data exported to .csv @ .../data/")
 except:
-    print("Error - folder may already contain files")
+    print("Error - folder may already contain files or, check the save location")
