@@ -18,7 +18,7 @@ def model_builder(hp):
         model.add(Dropout(hp.Float("dropout_" + str(i), min_value=0, max_value=0.7, step=0.1)))
         model.add(
             Dense(
-                units=hp.Int("layer_" + str(i), min_value=16, max_value=512, step=16),
+                units=hp.Int("layer_" + str(i), min_value=16, max_value=1024, step=64),
                 activation=hp.Choice("act_" + str(i), ["relu", "sigmoid"]),
             )
         )
@@ -26,7 +26,7 @@ def model_builder(hp):
     # output shape of the model the same as the number of features
     model.add(Dense(x_test.shape[1]), activation=hp.Choice("output_layer_act", ["relu", "sigmoid", "softmax"]))
 
-    hp_learning_rate = hp.Choice("learning_rate", values=[1e-2, 1e-3, 1e-4])
+    hp_learning_rate = hp.Choice("learning_rate", values=[1e-2, 1e-3, 1e-4, 1e-5])
 
     model.compile(
         optimizer=keras.optimizers.Adam(learning_rate=hp_learning_rate),
