@@ -11,7 +11,7 @@ def model_builder(hp):
     model = Sequential()
 
     # input layer 
-    model.add(Dense(units=x_train.shape[0], input_shape=(x_train.shape[1],)))
+    model.add(Dense(units=x.shape[0], input_shape=(x.shape[1],)))
 
     # let the model decide how many layers it wants to have
     for i in range(hp.Int("num_layers", min_value=2, max_value=5, step=1)):
@@ -24,7 +24,7 @@ def model_builder(hp):
         )
 
     # output shape of the model the same as the number of features
-    model.add(Dense(x_test.shape[1]), activation=hp.Choice("output_layer_act", ["relu", "sigmoid", "softmax"]))
+    model.add(Dense(y.shape[1]), activation=hp.Choice("output_layer_act", ["relu", "sigmoid", "softmax"]))
 
     hp_learning_rate = hp.Choice("learning_rate", values=[1e-2, 1e-3, 1e-4, 1e-5])
 
@@ -43,9 +43,7 @@ def hp_search(x_train, y_train):
     tuner = kt.BayesianOptimization(
         model_builder,
         objective="val_accuracy",
-        max_epochs=10,
-        factor=3,
-        directory=r"logs",
+        directory=r"../logs",
         project_name="BayOpt_v1.01",
     )
 
