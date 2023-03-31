@@ -1,3 +1,7 @@
 raw_data
 test_area.ipynb
 logs
+oversampled_test.csv
+oversampled_train.csv
+undersampled_test.csv
+udnersampled_train.csv
