@@ -1,6 +1,3 @@
-df_test.csv
-df_train.csv
-application_test.csv
-application_train.csv
+raw_data
 test_area.ipynb
 logs
