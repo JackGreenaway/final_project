@@ -2,12 +2,20 @@
 
 ### An Application of Artificial Intelligence for Credit Risk Management with Comparisons to Traditional Methods
 
-This is the repository for my final project during my MSc
+This is the repository for my final project during my MSc Financial Technology
 
-The project focuses on using TensorFlow to create a neural network capable of classifying credit applications on their credit worthiness
-(will they default or not...)
+The goal of this project is to compare traditional methods of credit applicants by whether they'll default or not
 
-It draws comparisons to traditional methods like logistic regressions
+In this project, I have created a neural network using TensorFlow. It leverages hyperparameter tuning to optimise the generalisation. 
 
+The traditional methods I will be a logistic regression, (plus more as I continue my literature review)
+
+The dataset utilised in the model isn't paramount to the project (the creation and application of the models are) therefore, it is trained and tested on a dataset from Kaggle.com
+
+Jobs todo:
+- Create a logistic regression model
+- Perfect the current NN model
+
+Link to Kaggle dataset: https://www.kaggle.com/competitions/home-credit-default-risk/data
 
 

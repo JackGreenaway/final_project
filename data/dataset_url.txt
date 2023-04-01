@@ -1,7 +1,0 @@
-The dataset used in this project is too large to be uploaded to GitHub
-
-Therefore, I have attached the link to the dataset below:
-
-    https://www.kaggle.com/competitions/home-credit-default-risk/data
-
-The dataset upon downloading will not be encoded therefore, run 'data_engineering.py' to encode the dataset
