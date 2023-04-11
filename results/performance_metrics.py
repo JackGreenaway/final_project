@@ -51,3 +51,9 @@ class metrics:
             confusion_matrix=con_matrix, display_labels=["Default", "Non-default"]
         )
         disp.plot(cmap=plt.cm.Blues)
+
+        # Extract true negative, false positive, false negative, true positive from the confusion matrix
+        tn, fp, fn, tp = con_matrix.ravel()
+        # Calculate false positive rate (FPR)
+        fpr = fp / (fp + tn)
+        print(f"False positive rate: {'%.2f' % fpr}")
