@@ -34,7 +34,9 @@ Balancing the dataset helps us to prevent the models from being biased towards t
 #### Neural Network Model
 The neural network used in this project was built using TensorFlow. The model architecture is shown below: 
 
-![Neural Network Visualised](https://github.com/JackGreenaway/final_project/blob/main/misc/nn_model.png)
+<p align="center">
+  <img src="https://github.com/JackGreenaway/final_project/blob/main/misc/nn_model.png"/>
+</p>
 
 The model was found using hyperparameter tuning. The tuner was BayesianSearch as I found that although, a lengthily searching process, it produced the best results for the model. I made sure to include regulation techniques to avoid the chances of overfitting. Through hyperparameter tuning these were also picked.
 
