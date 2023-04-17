@@ -13,8 +13,9 @@ The traditional methods I will be a logistic regression, (plus more as I continu
 The dataset utilised in the model isn't paramount to the project (the creation and application of the models are) therefore, it is trained and tested on a dataset from Kaggle.com
 
 Jobs todo:
-- Create a logistic regression model
-- Perfect the current NN model
+- Perfect the current models
+    - Find model parameters (logistic regression/linear discriminant analysis) used in previous research
+    - Maybe try different optimisation techniques?
 
 Link to Kaggle dataset: https://www.kaggle.com/competitions/home-credit-default-risk/data
 

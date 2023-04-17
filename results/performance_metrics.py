@@ -56,4 +56,4 @@ class metrics:
         tn, fp, fn, tp = con_matrix.ravel()
         # Calculate false positive rate (FPR)
         fpr = fp / (fp + tn)
-        print(f"False positive rate: {'%.2f' % fpr}")
+        print(f"False positive rate: {'%.2f' % (fpr*100)}%")
