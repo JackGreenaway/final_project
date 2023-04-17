@@ -1,3 +1,4 @@
+git lfs track "*.csv"
 git lfs push --all origin main
 git add .
 git commit -m ""
