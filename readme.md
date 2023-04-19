@@ -60,3 +60,6 @@ To evaluate the models, I used accuracy, precision, recall, F1-score, and AUC-sc
 The preliminary results show that my neural network outperforms traditional methods. However, this project is still a work in progress therefore, I cannot make conclusions yet about the effectiveness of my model. 
 
 This project has demonstrated my ability to take a real-world problem and ultimately, create a meaningful solution. I have used TensorFlow, SKlearn, data preprocessing techniques, visulisation libraries, and metrics to create a solution that hopefully could decrease the risk levels of a lender. 
+
+todo:
+  models need to be re-trained as I have realised I didn't have a centrally fitted scaler
