@@ -56,6 +56,9 @@ These models were picked as per my research repeatedly named these two models as
 ### Models Evaluation
 To evaluate the models, I used accuracy, precision, recall, F1-score, and AUC-score. I also used a AUC curve (for the neural network), and a heatmap to visualise the predictions. Lastly, arguably the most important metric: the false-positive, was calculated for each model.   
 
+### Deploying the Model
+I created a FastAPI to allow others to access the created model. There is also a demo file in the directory to display how the API works. I am thinking of hosting the file live when my grading comes around. I am also attempting to develop a pipeline that can perdiodically retrian the model - if - new data were to arise (in this case, it wouldn't unfortuantely)
+
 ### Results and Conclusions
 The preliminary results show that my neural network outperforms traditional methods. However, this project is still a work in progress therefore, I cannot make conclusions yet about the effectiveness of my model. 
 
