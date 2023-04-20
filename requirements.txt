@@ -12,3 +12,7 @@ pydantic
 fastapi
 joblib
 pickle
+mlflow
+scipy
+sqlalchemy
+alibi-detect

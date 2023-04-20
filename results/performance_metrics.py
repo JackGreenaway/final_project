@@ -38,6 +38,7 @@ class metrics:
         print(f"AUC_score: {'%.3f' % auc_result}")
 
     def plot_roc(self, ns_y_pred):
+        # ns_y_pred = non-scaled outputs of tf model
         fpr, tpr, threshold = roc_curve(self.y_true, ns_y_pred)
         roc_auc = auc(fpr, tpr)
 
