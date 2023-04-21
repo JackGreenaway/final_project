@@ -13,7 +13,7 @@ from pipepline import preprocessing_pipline
 
 app = FastAPI()
 model = keras.models.load_model(r"../models/neural_network/BayOpt_v1.03/")
-engine = create_engine("sqlite:///model_inputs.db")
+engine = create_engine("sqlite:///input_warehouse.db")
 
 @app.post("/predict")
 def predict_application(data: application_form):
@@ -30,9 +30,9 @@ def predict_application(data: application_form):
     df.to_sql("model_inputs", engine, if_exists="append")
 
     # log the prediction to mlflow
-    with mlflow.start_run(run_name="home_default_classification"):
-        mlflow.log_metric("prediction", y_pred[0])
-        mlflow.log_params(df_dict)
+    # with mlflow.start_run(run_name="home_default_classification"):
+    #     mlflow.log_metric("prediction", y_pred[0])
+    #     mlflow.log_params(df_dict)
 
     return {"prediction": float(y_pred)}
 
@@ -40,4 +40,4 @@ def predict_application(data: application_form):
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
 
-# uvicorn model:app --reload
+# uvicorn main:app --reload
