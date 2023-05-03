@@ -56,8 +56,10 @@ These models were picked as per my research repeatedly named these two models as
 ### Models Evaluation
 To evaluate the models, I used accuracy, precision, recall, F1-score, and AUC-score. I also used a AUC curve (for the neural network), and a heatmap to visualise the predictions. Lastly, arguably the most important metric: the false-positive, was calculated for each model.   
 
+NOTE: in regards to the binary classification, 1 = default, 0 = non-default
+
 ### Deploying the Model
-I created a FastAPI to allow others to access the created model. There is also a demo file in the directory to display how the API works. I am thinking of hosting the file live when my grading comes around. I am also attempting to develop a pipeline that can perdiodically retrian the model - if - new data were to arise (in this case, it wouldn't unfortunately)
+I created a FastAPI to allow others to access the created model. There is also a demo file in the directory to display how the API works. I am thinking of hosting the file live when my grading comes around. I am also attempting to develop a pipeline that can periodically retrain the model if there was feature drift or ground truth drift. 
 
 I have implemented MLFlow into the API to log inputs into the API. Also, there is an SQL database that stores the inputs and corresponding predictions. I have started to investigate how I can detect feature drift using statistical testing however, it's hard to implement accurately/meaningfully as the dataset is ultimately static - though, I am using it as a practising case to improve my understanding and practical ability in MLOps
 

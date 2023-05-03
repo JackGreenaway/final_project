@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
@@ -20,22 +21,29 @@ class metrics:
         self.y_pred = y_pred
 
     def calculate_metrics(self):
-        print(f"{'-'*10} Evaluation Metrics {'-'*10}")
+        # print(f"{'-'*10} Evaluation Metrics {'-'*10}")
 
         accuracy = accuracy_score(self.y_true, self.y_pred)
-        print(f"Accuracy: {'%.3f' % accuracy}")
-
+        accuracy = "%.3f" % accuracy 
+        
         precision = precision_score(self.y_true, self.y_pred)
-        print(f"Precision: {'%.3f' % precision}")
+        precision = "%.3f" % precision 
 
         recall = recall_score(self.y_true, self.y_pred)
-        print(f"Recall: {'%.3f' % recall}")
+        recall = "%.3f" % recall 
 
         f1 = f1_score(self.y_true, self.y_pred)
-        print(f"F1_score: {'%.3f' % f1}")
+        f1 = "%.3f" % f1 
 
         auc_result = roc_auc_score(self.y_true, self.y_pred)
-        print(f"AUC_score: {'%.3f' % auc_result}")
+        auc_result = "%.3f" % auc_result
+
+        results = pd.DataFrame(
+            data=[accuracy, precision, recall, f1, auc_result],
+            index=["Accuracy", "Precision", "Recall", "F1-score", "AUC-score"],
+            columns=["Score"],
+        )
+        print(results)
 
     def plot_roc(self, ns_y_pred):
         # ns_y_pred = non-scaled outputs of tf model
