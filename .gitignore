@@ -4,5 +4,4 @@ __pycache__
 mlruns
 processed_data
 raw_data
-
 *.csv
