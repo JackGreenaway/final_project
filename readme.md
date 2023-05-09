@@ -1,5 +1,9 @@
 # Credit Applicant Classification with TensorFlow Neural Networks
 
+## Current todo:
+- add cross validation (fold)
+- retrain models on new dataset composition
+
 ## An Application of Artificial Neural Networks for the Classification of Credit Applicants with Comparisons to Traditional Methods
 
 This is the documentation for my final project of the MSc Financial Technology course. This project focuses on the application of TensorFlow neural networks for the classification of credit applicants, and compares the results with traditional traditional methods of classification: linear decision analysis and logistic regression. 
