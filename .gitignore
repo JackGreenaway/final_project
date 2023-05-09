@@ -2,6 +2,6 @@ test_area.ipynb
 logs
 __pycache__
 mlruns
-processed_data
-raw_data
+data/processed_data
+data/raw_data
 *.csv
