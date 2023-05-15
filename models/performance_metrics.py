@@ -24,26 +24,28 @@ class metrics:
         # print(f"{'-'*10} Evaluation Metrics {'-'*10}")
 
         accuracy = accuracy_score(self.y_true, self.y_pred)
-        accuracy = "%.3f" % accuracy 
-        
+        # accuracy = "%.3f" % accuracy
+
         precision = precision_score(self.y_true, self.y_pred)
-        precision = "%.3f" % precision 
+        # precision = "%.3f" % precision
 
         recall = recall_score(self.y_true, self.y_pred)
-        recall = "%.3f" % recall 
+        # recall = "%.3f" % recall
 
         f1 = f1_score(self.y_true, self.y_pred)
-        f1 = "%.3f" % f1 
+        # f1 = "%.3f" % f1
 
         auc_result = roc_auc_score(self.y_true, self.y_pred)
-        auc_result = "%.3f" % auc_result
+        # auc_result = "%.3f" % auc_result
 
         results = pd.DataFrame(
             data=[accuracy, precision, recall, f1, auc_result],
             index=["Accuracy", "Precision", "Recall", "F1-score", "AUC-score"],
             columns=["Score"],
         )
-        print(results)
+        # print(results)
+
+        return accuracy, precision, recall, f1, auc_result
 
     def plot_roc(self, ns_y_pred):
         # ns_y_pred = non-scaled outputs of tf model
