@@ -24,19 +24,10 @@ class metrics:
         # print(f"{'-'*10} Evaluation Metrics {'-'*10}")
 
         accuracy = accuracy_score(self.y_true, self.y_pred)
-        # accuracy = "%.3f" % accuracy
-
         precision = precision_score(self.y_true, self.y_pred)
-        # precision = "%.3f" % precision
-
         recall = recall_score(self.y_true, self.y_pred)
-        # recall = "%.3f" % recall
-
         f1 = f1_score(self.y_true, self.y_pred)
-        # f1 = "%.3f" % f1
-
         auc_result = roc_auc_score(self.y_true, self.y_pred)
-        # auc_result = "%.3f" % auc_result
 
         results = pd.DataFrame(
             data=[accuracy, precision, recall, f1, auc_result],
@@ -55,16 +46,22 @@ class metrics:
         disp = RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc)
         disp.plot()
 
-    def plot_confusion_matrix(self):
-        con_matrix = confusion_matrix(self.y_true, self.y_pred)
 
-        disp = ConfusionMatrixDisplay(
-            confusion_matrix=con_matrix, display_labels=["Default", "Non-default"]
-        )
-        disp.plot(cmap=plt.cm.Blues)
 
-        # Extract true negative, false positive, false negative, true positive from the confusion matrix
-        tn, fp, fn, tp = con_matrix.ravel()
-        # Calculate false positive rate (FPR)
-        fpr = fp / (fp + tn)
-        print(f"False positive rate: {'%.2f' % (fpr*100)}%")
+
+
+
+
+#     def plot_confusion_matrix(self):
+#         con_matrix = confusion_matrix(self.y_true, self.y_pred)
+# 
+#         disp = ConfusionMatrixDisplay(
+#             confusion_matrix=con_matrix, display_labels=["Default", "Non-default"]
+#         )
+#         disp.plot(cmap=plt.cm.Blues)
+# 
+#         # Extract true negative, false positive, false negative, true positive from the confusion matrix
+#         tn, fp, fn, tp = con_matrix.ravel()
+#         # Calculate false positive rate (FPR)
+#         fpr = fp / (fp + tn)
+#         print(f"False positive rate: {'%.2f' % (fpr*100)}%")
