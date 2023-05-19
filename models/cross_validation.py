@@ -1,13 +1,14 @@
 import pandas as pd
+import numpy as np
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import KFold
+from sklearn.preprocessing import StandardScaler
 import performance_metrics
-
 
 class cross_val:
     def __init__(self, x, y) -> None:
-        self.x = x
-        self.y = y
+        self.x = np.array(x)
+        self.y = np.array(y)
     
     def run_validation(self, kfold, model):
         """
@@ -25,6 +26,10 @@ class cross_val:
         for train_index, test_index in kfold.split(self.x):
             x_train, x_test = self.x[train_index], self.x[test_index]
             y_train, y_test = self.y[train_index], self.y[test_index]
+            
+            # scale the x variables (fitting only to the train data)
+            scaler = StandardScaler()
+            x_train, x_test = scaler.fit_transform(x_train), scaler.transform(x_test)
             
             # fit model to train set
             model.fit(x_train, y_train)
@@ -56,5 +61,7 @@ class cross_val:
                                 results.auc.mean(),
                                 results.fpr.mean(),
                                 results.fnr.mean()]
+        
+        print("Validation Completed")
         
         return results, confusion_matrix_sum

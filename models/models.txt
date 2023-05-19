@@ -1,0 +1,2 @@
+v1 - 50:50 split, max_trials=20
+v2 - 80:20 split, max_trials=20 

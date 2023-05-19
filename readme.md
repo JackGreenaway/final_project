@@ -1,7 +1,7 @@
 # Credit Applicant Classification with TensorFlow Neural Networks
 
 ## Current todo:
-- add cross validation (fold)
+- add cross validation (KFold)
 - retrain models on new dataset composition
 
 ## An Application of Artificial Neural Networks for the Classification of Credit Applicants with Comparisons to Traditional Methods
