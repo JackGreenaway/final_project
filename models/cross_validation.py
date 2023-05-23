@@ -1,16 +1,22 @@
 import pandas as pd
 import numpy as np
+import performance_metrics
+import warnings
+
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
-import performance_metrics
+
+# Filter the specific warning message
+warnings.filterwarnings("ignore", message="X does not have valid feature names, but StandardScaler was fitted with feature names")
+
 
 class cross_val:
     def __init__(self, x, y) -> None:
         self.x = np.array(x)
         self.y = np.array(y)
     
-    def run_validation(self, kfold, model):
+    def run_validation(self, kfold, model, scaler):
         """
         This function runs all of the cross validation for the model
         
@@ -28,8 +34,7 @@ class cross_val:
             y_train, y_test = self.y[train_index], self.y[test_index]
             
             # scale the x variables (fitting only to the train data)
-            scaler = StandardScaler()
-            x_train, x_test = scaler.fit_transform(x_train), scaler.transform(x_test)
+            x_train, x_test = scaler.transform(x_train), scaler.transform(x_test)
             
             # fit model to train set
             model.fit(x_train, y_train)
