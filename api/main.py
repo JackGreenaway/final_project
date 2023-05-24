@@ -12,7 +12,7 @@ from pipepline import preprocessing_pipline
 
 
 app = FastAPI()
-model = keras.models.load_model(r"../models/neural_network/BayOpt_v1.03/")
+model = keras.models.load_model(r"../models/neural_network/nn_v1")
 engine = create_engine("sqlite:///input_warehouse.db")
 
 @app.post("/predict")

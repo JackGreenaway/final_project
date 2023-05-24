@@ -5,3 +5,4 @@ mlruns
 data/processed_data
 data/raw_data
 *.csv
+models/random_forest

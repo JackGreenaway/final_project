@@ -1,12 +1,13 @@
 # Credit Applicant Classification with TensorFlow Neural Networks
 
 ## Current todo:
-- add cross validation (KFold)
 - retrain models on new dataset composition
 
 ## An Application of Artificial Neural Networks for the Classification of Credit Applicants with Comparisons to Traditional Methods
 
-This is the documentation for my final project of the MSc Financial Technology course. This project focuses on the application of TensorFlow neural networks for the classification of credit applicants, and compares the results with traditional traditional methods of classification: linear decision analysis and logistic regression. 
+This is the documentation for my final project of the MSc Financial Technology course. This project focuses on the application of TensorFlow neural networks for the classification of credit applicants, and compares the results with traditional traditional methods of classification: linear decision analysis, logistic , and random forest. 
+
+I came up with the hypothesis that previous researchers failed to use hyperparameter tuning in their research. Therefore, could we say for certainty that certain models are better than others in this classification task? After all, a logistic regression could be set up for failure given it's base parameters. Therefore, I wanted to investigate how hyperparameter tuning affects the models performance/ranking.
 
 The project uses various Python libraries such as TensorFlow and SKlearn (full list in requirements.txt).
 
@@ -35,6 +36,11 @@ The imblearn library enabled me to use Synthetic Minority Oversampling Technique
 
 Balancing the dataset helps us to prevent the models from being biased towards the majority class. If the data wasn't balanced, the model wouldn't ever really learn how to deal with the minority class. This essentially means that the model doesn't generalise well when it encounters a minority case.  
 
+### Splits
+I took an unusual route to tuning my models. Due to the limited computing power, I split the dataset 50/50. 50% of the dataset would be used to tune for hyperparameters - and only hyperparameters. I would then take these hyperparameters and run a K-fold cross-validation on the remaining 50% of the data to get an evaluation for the models performance
+
+In an ideal world, I would be able just to run a straight nested K-fold where, I retune hyperparameters for each fold. However, the breadth of this paper isn't large enough to enable me to do this. I could reduce the dataset in size however, I already saw with undersampling that a reduced sample size significantly impacted the performance of the model
+
 ### Neural Network Model
 The neural network used in this project was built using TensorFlow. The model architecture is shown below: 
 
@@ -46,7 +52,7 @@ The model was found using hyperparameter tuning. The tuner was BayesianSearch as
 
 Although, the output layer used a sigmoid activation, I still needed to transfer the continuous data into binary. I decide a 50/50 split for either 0:1. Though, in a real world example, a company could choose their tolerance levels.
 
-### Linear Discriminant Analysis & Logistic Regression Models
+### Linear Discriminant Analysis & Logistic Regression Models & Random Forest
 A linear discriminant analysis (LDA) model is built and trained using the credit application data. LDA is a linear classification technique that seeks to find the optimal linear combination of features that best separates the classes. The model is evaluated using accuracy, precision, recall, and F1-score.
 
 A logistic regression model is also built and trained using the credit application data. Logistic regression is a traditional statistical method used for binary classification tasks. The model is evaluated using accuracy, precision, recall, and F1-score.
@@ -56,6 +62,8 @@ These models were picked as per my research repeatedly named these two models as
 - Bekhet, H. A., & Eletter, S. F. K. (2014). Credit risk assessment model for Jordanian commercial banks: Neural scoring approach. Review of Development Finance, 4(1), 20-28. 
 
 - Ince, H., & Aktan, B. (2009). A comparison of data mining techniques for credit scoring in banking: A managerial perspective. Journal of Business Economics and Management, 10(3),233-240. 
+
+I did look into using a SVM however, the quadratic time complexity meant that I didn't really have enough computing power to easily/quickly train the model
 
 ### Models Evaluation
 To evaluate the models, I used accuracy, precision, recall, F1-score, and AUC-score. I also used a AUC curve (for the neural network), and a heatmap to visualise the predictions. Lastly, arguably the most important metric: the false-positive, was calculated for each model.   

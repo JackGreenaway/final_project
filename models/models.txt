@@ -1,2 +1,1 @@
-v1 - 50:50 split, max_trials=20
-v2 - 50:50 split, max_trials=20, cv_folds=2
+v1 - 50:50 split, max_trials=20, cv_folds=2

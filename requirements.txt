@@ -3,7 +3,6 @@ keras
 keras-tuner
 sklearn
 matplotlib
-scikit-optimize
 imblearn
 pandas
 numpy==1.23.4
