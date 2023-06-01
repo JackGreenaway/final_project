@@ -1,7 +1,4 @@
-# Credit Applicant Classification with TensorFlow Neural Networks
-
-## Current todo:
-- retrain models on new dataset composition
+# An Application and Evaluation of Artificial Neural Networks in the Classification of Credit Applicants with Comparisons to Traditional Methods with the Additional Use of Hyperparameter Tuning
 
 ## An Application of Artificial Neural Networks for the Classification of Credit Applicants with Comparisons to Traditional Methods
 
@@ -29,15 +26,17 @@ Before the data is even used in the model, it needs to be cleaned. Firstly, the 
 
 Therefore, I created an algorithm to go through the dataset and populate a dictionary containing a key. This key is then used to encode the dataset to numbers. We replace NaN's with 0's, and use the imblearn library to balance the dataset.
 
+The NaN's were replaced using a linear regression as I felt this is the most reproducible method for a research paper
+
 I wanted to note that I did attempt to use an undersampled dataset however, there just wasn't enough data for the neural network to converge to the global minima. In fact, it found it hard to progress at all. Therefore, I had to oversample the dataset.  
 
 ### Balancing the Dataset
-The imblearn library enabled me to use Synthetic Minority Oversampling Technique to equally balance the dataset. Interestingly, it uses K-nearest neighbor to populate the dataset with synthetic values. 
+The imblearn library enabled me to use Synthetic Minority Oversampling Technique (SMOTE) to equally balance the dataset. Interestingly, it uses K-nearest neighbor to populate the dataset with synthetic values. 
 
 Balancing the dataset helps us to prevent the models from being biased towards the majority class. If the data wasn't balanced, the model wouldn't ever really learn how to deal with the minority class. This essentially means that the model doesn't generalise well when it encounters a minority case.  
 
 ### Splits
-I took an unusual route to tuning my models. Due to the limited computing power, I split the dataset 50/50. 50% of the dataset would be used to tune for hyperparameters - and only hyperparameters. I would then take these hyperparameters and run a K-fold cross-validation on the remaining 50% of the data to get an evaluation for the models performance
+I took an unusual route to tuning my models. Due to the limited computing power, I split the dataset 50/50. 50% of the dataset would be used to tune for hyperparameters - and only hyperparameters. I would then take these hyperparameters and run a K-fold cross-validation (K = 5) on the remaining 50% of the data to get an evaluation for the models performance
 
 In an ideal world, I would be able just to run a straight nested K-fold where, I retune hyperparameters for each fold. However, the breadth of this paper isn't large enough to enable me to do this. I could reduce the dataset in size however, I already saw with undersampling that a reduced sample size significantly impacted the performance of the model
 
@@ -63,6 +62,9 @@ These models were picked as per my research repeatedly named these two models as
 
 - Ince, H., & Aktan, B. (2009). A comparison of data mining techniques for credit scoring in banking: A managerial perspective. Journal of Business Economics and Management, 10(3),233-240. 
 
+- Loan default prediction using decision trees and random forest: A comparative study, M. Madaan, A. Kumar, C. Keshri, R. Jain and P. Nagrath, IOP Conference Series: Materials Science and Engineering 2021, Publisher: IOP Publishing Pages: 012042
+
+
 I did look into using a SVM however, the quadratic time complexity meant that I didn't really have enough computing power to easily/quickly train the model
 
 ### Models Evaluation
@@ -76,6 +78,13 @@ I created a FastAPI to allow others to access the created model. There is also a
 I have implemented MLFlow into the API to log inputs into the API. Also, there is an SQL database that stores the inputs and corresponding predictions. I have started to investigate how I can detect feature drift using statistical testing however, it's hard to implement accurately/meaningfully as the dataset is ultimately static - though, I am using it as a practising case to improve my understanding and practical ability in MLOps
 
 ### Results and Conclusions
-The preliminary results show that my neural network outperforms traditional methods. However, this project is still a work in progress therefore, I cannot make conclusions yet about the effectiveness of my model. 
+The results of the study find that the neural network has the best overall accuracy, recall, F1, AUC and FNR. However, it has the worst FPR which is arguably the most important metric when lending. The results are as follows:
+
+<p align="center">
+  <img src="https://github.com/JackGreenaway/final_project/blob/main/misc/results_table.png"/>
+</p>
 
 This project has demonstrated my ability to take a real-world problem and ultimately, create a meaningful solution. I have used TensorFlow, SKlearn, data preprocessing techniques, visulisation libraries, and metrics to create a solution that hopefully could decrease the risk levels of a lender. 
+
+### Notes
+Please note that due to the size of the trained random forest models, they have not been uploaded to GitHub
