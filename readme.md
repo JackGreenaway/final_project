@@ -19,6 +19,8 @@ I choose this topic as I am very interested in financial risk. I think the whole
 ### Installation
 To run this project, you need to install Python libraries contained in the requirements folder:
 
+Python version = 3.9.13
+
 You can install the libraries with the command: <pre><code>pip install -r requirements.txt</code></pre>
 
 ### Data Preprocessing
